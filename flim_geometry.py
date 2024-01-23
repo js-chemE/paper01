@@ -194,6 +194,15 @@ class Ray:
         return LineString([self.base_point, self.end_point])
 
     @property
+    def base_ray(self):
+        return LineString(
+            [
+                self.base_point,
+                fa.get_point_from_angle(self.base_point, self.angle, dist=5000),
+            ]
+        )
+
+    @property
     def length(self):
         return self.base_line.length
 
